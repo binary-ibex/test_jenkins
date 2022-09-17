@@ -12,5 +12,23 @@ pipeline {
                 '''
             }
         }
+        stage("Starting container") {
+            steps {
+                sh '''
+                docker compose up --no-color --wait -d
+                docker compose ps
+                '''
+            }
+        } 
+        stage("Run test agains the container") {
+            steps {
+                sh 'curl localhost:8112'
+            }
+        }
+        post {
+            always {
+                sh 'docker compose down --remove-orphans -v'
+            }
+        }
     }
 }

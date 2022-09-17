@@ -1,0 +1,12 @@
+version: '3'
+
+
+
+services:
+  middle_man:
+    build: middle_man/
+
+    ports:
+      - 8112:8112
+    
+
