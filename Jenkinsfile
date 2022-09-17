@@ -8,6 +8,7 @@ pipeline {
                 docker version
                 docker compose version
                 curl --version
+                jenkins --version
                 '''
             }
         }
